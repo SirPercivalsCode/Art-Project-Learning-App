@@ -175,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -465,6 +466,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &239527975
 Canvas:
   m_ObjectHideFlags: 0
@@ -805,7 +807,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Answer
+  m_Text: 
 --- !u!222 &679293296
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -847,6 +849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1023,6 +1026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1251,17 +1255,20 @@ MonoBehaviour:
   cardlist:
   - question: Hi?
     answer: No!
-    difficulty: 0
+    difficulty: 3
   - question: Hey
     answer: yay
-    difficulty: 0
+    difficulty: 3
+  - question: Hello?
+    answer: Yes!
+    difficulty: 3
+  - question: Hello there?
+    answer: General Kenobi.
+    difficulty: 3
+  cardQueue: []
   currentCard:
     question: Hello?
     answer: Yes!
-    difficulty: 3
-  nextCard:
-    question: 
-    answer: 
     difficulty: 3
   answerDisplay: {fileID: 679293295}
   questionDisplay: {fileID: 179368293}
@@ -1397,7 +1404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.6745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1479,6 +1486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}

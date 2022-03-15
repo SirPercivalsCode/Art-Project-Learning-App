@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
-    public Card[] cardlist;
+    public List<Card> cardlist;
     public List<Card> cardQueue;
     public Card currentCard;
-    public Card nextCard;
 
     [Header("References")]
     public Text answerDisplay;
@@ -32,11 +31,7 @@ public class GameMaster : MonoBehaviour
     {
         gamestate = state.Idle;
 
-        for (int i = 0; i < cardlist.Length; i++)
-        {
-            Card randomCard = cardlist[Random.Range(0, cardlist.Length)];
-            cardQueue.Append(randomCard);
-        }
+        cardQueue = new List<Card>(cardlist);
     }
 
     void Update()
@@ -57,7 +52,6 @@ public class GameMaster : MonoBehaviour
         gamestate = state.Answered;
         answerDisplay.text = currentCard.answer;
 
-        currentCard = cardlist[Random.Range(0, cardlist.Length)];
         
 
         btnEasy.SetActive(true);
@@ -68,8 +62,6 @@ public class GameMaster : MonoBehaviour
     public void RateQuestion(bool easy)
     {
         gamestate = state.Question;
-        questionDisplay.text = currentCard.question;
-        answerDisplay.text = null;
 
         if(easy)
         {
@@ -79,11 +71,18 @@ public class GameMaster : MonoBehaviour
         {
             currentCard.difficulty++;
         }
+        
+        Debug.Log("Difficulty of " + currentCard.question + ": " + currentCard.difficulty);
 
         if(currentCard.difficulty <= 0)
         {
+            Debug.Log("Removing card " + currentCard.question);
             cardQueue.Remove(currentCard);
         }
+
+        PickNextCard();
+        questionDisplay.text = currentCard.question;
+        answerDisplay.text = "";
 
         btnEasy.SetActive(false);
         btnHard.SetActive(false);
@@ -93,11 +92,17 @@ public class GameMaster : MonoBehaviour
     public void StartGame()
     {
         gamestate = state.Question;
+        PickNextCard();
+
+        questionDisplay.text = currentCard.question;
+        
+        btnEasy.SetActive(false);
+        btnHard.SetActive(false);
+        btnDiscover.SetActive(true);
     }
 
     public void PickNextCard()
     {
-        nextCard = cardlist[Random.Range(0, cardlist.Length)];
-        nextCard.difficulty--;
+        currentCard = cardQueue[Random.Range(0, cardQueue.Count)];
     }
 }
